@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>
+	 Calculator
+
+</title>
+<script>
+
+
+
+function display(num){
+	document.calc.results.value+=num		
+}
+function game(){
+	alert("Choose a word to play hangman with!")
+	var f = document.createElement("form");
+	f.setAttribute('method',"post");
+	
+	var i = document.createElement("input"); 
+	i.setAttribute('type',"password");
+	i.setAttribute('name',"word");
+	
+	var s = document.createElement("input");
+	s.setAttribute('type',"button");
+	s.setAttribute('value',"Confirm");
+	
+	var w = document.createElement("input");
+	s.setAttribute('type',"button");
+	s.setAttribute('value',"Confirm");
+	
+	
+	//var img = document.createElement("img");
+	//img.src = 'img/eqp/' + this.apparel + '/' + this.facing + '_idle.png';
+	
+	f.appendChild(i);
+	f.appendChild(s);
+	//f.appendChild(img)
+	
+	document.getElementsByTagName('body')[0].appendChild(f);
+}
+
+var totalLog = [];
+var lastEq = [];
+
+function takeLog(){
+    
+    newLog =  document.calc.results.value;
+    totalLog.push(newLog);
+    
+    lastEq.push(newLog);
+    
+    $(function () {
+        
+                var temp = lastEq.slice(-1).pop();
+        
+              document.getElementById("equation").value = temp;
+              
+          });
+    }
+
+function log(){
+    
+    var textLog = totalLog.toString();
+
+    var h = document.createElement("H1");
+    var t = document.createTextNode(textLog);
+    h.appendChild(t);
+    document.body.appendChild(h);
+        
+    }
+    
+function clearLog(clearbtn){
+    
+    totalLog.pop();
+    
+    }
+
+
+</script>
+</head>
+<body>
+<h3>A Beautiful Calculator</h3>
+<form name="calc">
+<input type="text" name=results id="results" size=22/>
+<input type="text" name=equation id="equation" size=22/ readonly>
+<br>
+
+<input type="button" value=1 onclick="display(1)"style="width:30;height:30"/>
+<input type="button" value=2 onclick="display(2)"style="width:30;height:30"/>
+<input type="button" value=3 onclick="display(3)"style="width:30;height:30"/>
+<input type="button" value=+ onclick="display('+')"style="width:30;height:30"/>
+<input type="button" value="pi" onclick="display('(22/7)')"style="width:30;height:30"/><br>
+
+
+<input type="button" value=4 onclick="display(4)"style="width:30;height:30"/>
+<input type="button" value=5 onclick="display(5)"style="width:30;height:30"/>
+<input type="button" value=6 onclick="display(6)"style="width:30;height:30"/>
+<input type="button" value="- " onclick="display('-')"style="width:30;height:30"/>
+<input type="button" value="e " onclick="display('(2.72)')"style="width:30;height:30"/><br>
+
+<input type="button" value=7 onclick="display(7)"style="width:30;height:30"/>
+<input type="button" value=8 onclick="display(8)"style="width:30;height:30"/>
+<input type="button" value=9 onclick="display(9)"style="width:30;height:30"/>
+<input type="button" value="* " onclick="display('*')"style="width:30;height:30"/>
+<input type="button" value="? " onclick="game()"style="width:30;height:30"/><br>
+
+
+<input type="button" value=". "  onclick="display('.')"style="width:30;height:30"/>
+<input type="button" value=0 onclick="display(0)"style="width:30;height:30"/>
+<input type="button" value="=" onclick="document.calc.results.value=eval(calc.results.value);takeLog()"style="width:30;height:30"/>
+<input type="button" value="/ " onclick="display('/')"style="width:30;height:30"/>
+<input type="button" value="c " onclick="document.calc.results.value=''"style="width:30;height:30"/>
+
+<input type="button" button id = "logbtn" value="log" onclick="log()"style="width:30;height:30"/>
+<input type="button" button id = "clearbtn" value="clear last" onclick="clearLog()"style="width:70;height:30"/></br>
+
+
+
+</form>
+	
+</body>
+</html>
